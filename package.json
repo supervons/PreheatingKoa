@@ -4,6 +4,7 @@
   "description": "koa2 explore",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -11,16 +12,19 @@
   "dependencies": {
     "koa": "^2.13.1"
   },
-	"prettier": {
-		"singleQuote": true,
-		"semi": true,
-		"tabWidth": 2,
-		"useTabs": false,
-		"trailingComma": "none",
-		"bracketSpacing": true,
-		"arrowParens": "avoid",
-		"jsxBracketSameLine": false,
-		"proseWrap": "preserve",
-		"printWidth": 80
-	}
+  "prettier": {
+    "singleQuote": true,
+    "semi": true,
+    "tabWidth": 2,
+    "useTabs": false,
+    "trailingComma": "none",
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "jsxBracketSameLine": false,
+    "proseWrap": "preserve",
+    "printWidth": 80
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
