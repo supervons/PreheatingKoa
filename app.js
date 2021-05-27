@@ -14,6 +14,7 @@ app.use(async (ctx, next) => {
       console.log(postdata);
     });
   } else if (ctx.request.method === 'GET') {
+    // root path
     if (ctx.request.path !== '/') {
       ctx.response.type = 'text/html';
       ctx.response.body = {
