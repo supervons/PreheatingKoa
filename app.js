@@ -4,6 +4,7 @@ const app = new koa();
 // add a middleware.
 app.use(async (ctx, next) => {
   ctx.response.status = 200;
+  await next();
   // choose method
   if (ctx.request.method === 'POST') {
     let postdata = '';
@@ -28,6 +29,14 @@ app.use(async (ctx, next) => {
       ctx.response.body = { name: 'Hello World1' };
     }
   }
+});
+
+// middleware2
+app.use(async (ctx, next) => {
+  const start = Date.now();
+  await next();
+  const ms = Date.now() - start;
+  console.log(`${ctx.method} ${ctx.url} - ${ms}`);
 });
 
 // add a listen.
