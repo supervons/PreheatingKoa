@@ -39,6 +39,10 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}`);
 });
 
+app.on('error', err => {
+  console.error('server error', err);
+});
+
 // add a listen.
 app.listen(3000, () => {
   console.log('server is running at http://localhost:3000');
