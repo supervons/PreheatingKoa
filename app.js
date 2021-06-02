@@ -3,6 +3,7 @@ const app = new koa();
 
 // add a middleware.
 app.use(async (ctx, next) => {
+  console.log(app);
   ctx.response.status = 200;
   // Execute the next middleware
   await next();
@@ -16,8 +17,12 @@ app.use(async (ctx, next) => {
       console.log(postdata);
     });
   } else if (ctx.request.method === 'GET') {
-    // root path
-    if (ctx.request.path !== '/') {
+    if (ctx.request.path === '/getHtml') {
+      // read template file.
+      const fs = require('fs');
+      ctx.response.type = 'html';
+      ctx.response.body = fs.createReadStream('./template/test.html');
+    } else if (ctx.request.path !== '/') {
       ctx.response.type = 'text/html';
       ctx.response.body = {
         url: ctx.request.url,
@@ -25,7 +30,7 @@ app.use(async (ctx, next) => {
         querystring: ctx.request.querystring
       };
     } else {
-      // add response type : text、html、json
+      // root path add response type : text、html、json
       ctx.response.type = 'text';
       ctx.response.body = { name: 'Hello World1' };
     }
