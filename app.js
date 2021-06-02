@@ -4,6 +4,7 @@ const app = new koa();
 // add a middleware.
 app.use(async (ctx, next) => {
   ctx.response.status = 200;
+  // Execute the next middleware
   await next();
   // choose method
   if (ctx.request.method === 'POST') {
@@ -39,8 +40,9 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}`);
 });
 
-app.on('error', err => {
-  console.error('server error', err);
+// middleware3
+app.use(async (ctx, next) => {
+  console.log(`i'm last middleware`);
 });
 
 // add a listen.
