@@ -11,7 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "koa": "^2.13.1",
-    "koa-route": "^3.2.0"
+    "koa-route": "^3.2.0",
+    "koa-static": "^5.0.0"
   },
   "prettier": {
     "singleQuote": true,

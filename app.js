@@ -1,6 +1,10 @@
 const koa = require('koa');
 const route = require('koa-route');
 const app = new koa();
+// open static dir
+const staticFiles = require('koa-static');
+const path = require('path');
+app.use(staticFiles(path.join(__dirname, 'public')));
 
 // main api, default data.
 const main = ctx => {
@@ -11,7 +15,7 @@ const main = ctx => {
 const getHtml = ctx => {
   const fs = require('fs');
   ctx.response.type = 'html';
-  ctx.response.body = fs.createReadStream('./template/test.html');
+  ctx.response.body = fs.createReadStream('./public/test.html');
 };
 
 // get request
