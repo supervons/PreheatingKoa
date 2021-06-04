@@ -6,6 +6,8 @@ const staticFiles = require('koa-static');
 const path = require('path');
 app.use(staticFiles(path.join(__dirname, 'public')));
 
+const compose = require('koa-compose');
+
 // main api, default data.
 const main = ctx => {
   ctx.response.type = 'html';
@@ -28,6 +30,9 @@ const getText = ctx => {
   };
 };
 
+// Middleware composition
+const middlewares = compose([getText, getHtml]);
+
 // post request test
 const postTest = async ctx => {
   ctx.response.type = 'application/json';
@@ -48,7 +53,7 @@ const redirect = ctx => {
 };
 
 app.use(route.get('/', main));
-app.use(route.get('/getHtml', getHtml));
+app.use(route.get('/getCompose', middlewares));
 app.use(route.get('/getHtml', getHtml));
 app.use(route.get('/getText', getText));
 app.use(route.post('/postTest', postTest));
