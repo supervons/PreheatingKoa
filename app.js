@@ -2,6 +2,12 @@ const koa = require('koa');
 const route = require('koa-route');
 const app = new koa();
 
+// main api, default data.
+const main = ctx => {
+  ctx.response.type = 'html';
+  ctx.response.body = `<p>Hello BaseKoa!</p>`;
+};
+
 const getHtml = ctx => {
   const fs = require('fs');
   ctx.response.type = 'html';
@@ -31,6 +37,8 @@ const postTest = async ctx => {
   ctx.response.body = postdata;
 };
 
+app.use(route.get('/', main));
+app.use(route.get('/getHtml', getHtml));
 app.use(route.get('/getHtml', getHtml));
 app.use(route.get('/getText', getText));
 app.use(route.post('/postTest', postTest));
