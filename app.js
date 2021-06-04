@@ -8,6 +8,19 @@ app.use(staticFiles(path.join(__dirname, 'public')));
 
 const compose = require('koa-compose');
 
+// error middleware
+const handler = async (ctx, next) => {
+  try {
+    // run next middleware
+    await next();
+  } catch (err) {
+    ctx.response.status = err.statusCode || err.status || 500;
+    ctx.response.body = {
+      message: err.message
+    };
+  }
+};
+
 // main api, default data.
 const main = ctx => {
   ctx.response.type = 'html';
@@ -58,6 +71,7 @@ const error = ctx => {
   ctx.response.body = 'Page Not Found';
 };
 
+app.use(handler);
 app.use(route.get('/', main));
 app.use(route.get('/getCompose', middlewares));
 app.use(route.get('/getHtml', getHtml));
