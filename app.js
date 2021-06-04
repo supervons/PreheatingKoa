@@ -52,12 +52,19 @@ const redirect = ctx => {
   ctx.response.body = `<p>redirect</p>`;
 };
 
+// error demo
+const error = ctx => {
+  ctx.response.status = 404; // this line = ctx.throw(404);
+  ctx.response.body = 'Page Not Found';
+};
+
 app.use(route.get('/', main));
 app.use(route.get('/getCompose', middlewares));
 app.use(route.get('/getHtml', getHtml));
 app.use(route.get('/getText', getText));
 app.use(route.post('/postTest', postTest));
 app.use(route.get('/redirect', redirect));
+app.use(route.get('/error', error));
 
 // add a listen.
 app.listen(3000, () => {
