@@ -41,11 +41,18 @@ const postTest = async ctx => {
   ctx.response.body = postdata;
 };
 
+// router redirect
+const redirect = ctx => {
+  ctx.response.redirect('/');
+  ctx.response.body = `<p>redirect</p>`;
+};
+
 app.use(route.get('/', main));
 app.use(route.get('/getHtml', getHtml));
 app.use(route.get('/getHtml', getHtml));
 app.use(route.get('/getText', getText));
 app.use(route.post('/postTest', postTest));
+app.use(route.get('/redirect', redirect));
 
 // add a listen.
 app.listen(3000, () => {
