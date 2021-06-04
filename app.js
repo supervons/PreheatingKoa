@@ -18,6 +18,8 @@ const handler = async (ctx, next) => {
     ctx.response.body = {
       message: err.message
     };
+    // if u want open app.on('error'), u need this line
+    ctx.app.emit('error', err, ctx);
   }
 };
 
@@ -67,9 +69,16 @@ const redirect = ctx => {
 
 // error demo
 const error = ctx => {
+  ctx.throw(404);
   ctx.response.status = 404; // this line = ctx.throw(404);
   ctx.response.body = 'Page Not Found';
 };
+
+// global error listener.
+app.on('error', err => {
+  console.log('===>server error', err);
+  console.log(err);
+});
 
 app.use(handler);
 app.use(route.get('/', main));
