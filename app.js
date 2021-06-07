@@ -23,6 +23,13 @@ const handler = async (ctx, next) => {
   }
 };
 
+// cookie demo.
+const cookie = ctx => {
+  const n = Number(ctx.cookies.get('test') || 0) + 1;
+  ctx.cookies.set('test', n);
+  ctx.response.body = n + ' tests';
+};
+
 // main api, default data.
 const main = ctx => {
   ctx.response.type = 'html';
@@ -87,6 +94,7 @@ app.use(route.get('/getHtml', getHtml));
 app.use(route.get('/getText', getText));
 app.use(route.post('/postTest', postTest));
 app.use(route.get('/redirect', redirect));
+app.use(route.get('/cookie', cookie));
 app.use(route.get('/error', error));
 
 // add a listen.
