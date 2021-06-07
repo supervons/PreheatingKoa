@@ -8,7 +8,6 @@ app.use(staticFiles(path.join(__dirname, 'public')));
 
 // file upload
 const fs = require('fs');
-const os = require('os');
 const koaBody = require('koa-body');
 
 const compose = require('koa-compose');
@@ -94,7 +93,6 @@ app.on('error', err => {
 
 // cookie demo.
 const upload = ctx => {
-  const tmpdir = os.tmpdir();
   const filePaths = [];
   const files = ctx.request.files || {};
   console.log(JSON.stringify(files));
