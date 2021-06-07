@@ -6,6 +6,11 @@ const staticFiles = require('koa-static');
 const path = require('path');
 app.use(staticFiles(path.join(__dirname, 'public')));
 
+// file upload
+const fs = require('fs');
+const os = require('os');
+const koaBody = require('koa-body');
+
 const compose = require('koa-compose');
 
 // error middleware
@@ -87,6 +92,24 @@ app.on('error', err => {
   console.log(err);
 });
 
+// cookie demo.
+const upload = ctx => {
+  const tmpdir = os.tmpdir();
+  const filePaths = [];
+  const files = ctx.request.files || {};
+  console.log(JSON.stringify(files));
+  for (let key in files) {
+    const file = files[key];
+    const filePath = path.join(__dirname + '/tmp', file.name);
+    const reader = fs.createReadStream(file.path);
+    const writer = fs.createWriteStream(filePath);
+    reader.pipe(writer);
+    filePaths.push(filePath);
+  }
+  ctx.body = filePaths;
+};
+
+app.use(koaBody({ multipart: true }));
 app.use(handler);
 app.use(route.get('/', main));
 app.use(route.get('/getCompose', middlewares));
@@ -95,6 +118,7 @@ app.use(route.get('/getText', getText));
 app.use(route.post('/postTest', postTest));
 app.use(route.get('/redirect', redirect));
 app.use(route.get('/cookie', cookie));
+app.use(route.post('/upload', upload));
 app.use(route.get('/error', error));
 
 // add a listen.
