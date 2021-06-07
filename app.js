@@ -1,5 +1,4 @@
 const koa = require('koa');
-const route = require('koa-route');
 const app = new koa();
 // open static dir
 const staticFiles = require('koa-static');
