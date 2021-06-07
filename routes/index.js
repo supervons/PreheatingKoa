@@ -17,13 +17,14 @@ router.get('/main', async (ctx, next) => {
 });
 
 // get request
-const getText = ctx => {
+const getText = (ctx, next) => {
   ctx.response.type = 'text/html';
   ctx.response.body = {
     url: ctx.request.url,
     query: ctx.request.query,
     querystring: ctx.request.querystring
   };
+  next();
 };
 
 // get request
