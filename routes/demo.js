@@ -1,4 +1,16 @@
 const router = require('koa-router')();
+const mysql = require('../data_base/index');
+
+// mysql test
+const mysqlTest = async ctx => {
+  let data = await mysql.query();
+  ctx.body = {
+    code: 1,
+    data: data,
+    mesg: 'ok'
+  };
+};
+
 // post request test
 const postTest = async ctx => {
   ctx.response.type = 'application/json';
@@ -26,6 +38,7 @@ const error = ctx => {
 };
 
 router.post('/postTest', postTest);
+router.post('/mysqlTest', mysqlTest);
 router.get('/redirect', redirect);
 router.get('/error', error);
 
