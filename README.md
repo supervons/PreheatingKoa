@@ -18,4 +18,6 @@
 - [ ] redis
 - [ ] MongoDB
 - [ ] JWT 认证
+- [ ] mock 数据
+- [ ] TS 改造
 - [ ] 微服务
