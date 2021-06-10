@@ -11,6 +11,16 @@ const mysqlTest = async ctx => {
   };
 };
 
+// mysql test
+const getUsers = async ctx => {
+  let data = await mysql.queryUsers();
+  ctx.body = {
+    code: 1,
+    data: data,
+    mesg: 'ok'
+  };
+};
+
 // post request test
 const postTest = async ctx => {
   ctx.response.type = 'application/json';
@@ -39,6 +49,7 @@ const error = ctx => {
 
 router.post('/postTest', postTest);
 router.post('/mysqlTest', mysqlTest);
+router.post('/getUsers', getUsers);
 router.get('/redirect', redirect);
 router.get('/error', error);
 
