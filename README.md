@@ -1,3 +1,5 @@
+[简体中文](./README.md) | [English](./README.en.md)
+
 ### 从零开始，一步一步搭建 Koa 框架，为后面打好基础。
 
 ### Build some KOA fundamentals.
@@ -14,7 +16,7 @@
 - [x] 静态资源开放
 - [x] 数据库连接
 - [ ] 寻找更简单的数据库查询方式
-- [ ] mocha 单元测试
+- [x] mocha 单元测试
 - [ ] redis
 - [ ] MongoDB
 - [ ] JWT 认证
