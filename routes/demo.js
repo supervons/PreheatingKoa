@@ -3,7 +3,7 @@ const mysql = require('../data_base/index');
 
 // mysql test
 const mysqlTest = async ctx => {
-  let data = await mysql.query();
+  let data = await mysql.queryNews();
   ctx.body = {
     code: 1,
     data: data,
