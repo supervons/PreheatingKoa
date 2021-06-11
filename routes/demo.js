@@ -23,15 +23,7 @@ const getUsers = async ctx => {
 
 // post request test
 const postTest = async ctx => {
-  ctx.response.type = 'application/json';
-  let postdata = '';
-  await ctx.req.on('data', data => {
-    postdata += data;
-  });
-  ctx.req.on('end', () => {
-    console.log(postdata);
-  });
-  ctx.response.body = postdata;
+  ctx.response.body = ctx.request.body.data;
 };
 
 // router redirect

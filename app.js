@@ -1,5 +1,5 @@
 const koa = require('koa');
-const app = new koa();
+const app = (module.exports = new koa());
 // open static dir
 const staticFiles = require('koa-static');
 const path = require('path');
@@ -14,6 +14,7 @@ const index = require('./routes/index');
 // error middleware
 const handler = async (ctx, next) => {
   try {
+    // console.log('权限认证！');
     // run next middleware
     await next();
   } catch (err) {
@@ -33,6 +34,8 @@ app.use(file.routes(), file.allowedMethods());
 app.use(index.routes(), index.allowedMethods());
 
 // add a listen.
-app.listen(3000, () => {
-  console.log('server is running at http://localhost:3000');
-});
+if (!module.parent) {
+  app.listen(3000, () => {
+    console.log('server is running at http://localhost:3000');
+  });
+}
