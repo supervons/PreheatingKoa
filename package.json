@@ -10,13 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ioredis": "^4.27.5",
     "koa": "^2.13.1",
     "koa-body": "^4.2.0",
     "koa-compose": "^4.1.0",
     "koa-route": "^3.2.0",
     "koa-router": "^10.0.0",
     "koa-static": "^5.0.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "redis": "^3.1.2"
   },
   "prettier": {
     "singleQuote": true,
