@@ -17,7 +17,7 @@
 - [x] database connection
 - [ ] Looking for simpler database queries
 - [x] Mocha unit tests
-- [ ] redis
+- [x] redis
 - [ ] MongoDB
 - [ ] JWT certification
 - [ ] mock data

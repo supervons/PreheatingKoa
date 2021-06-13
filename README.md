@@ -17,7 +17,7 @@
 - [x] 数据库连接
 - [ ] 寻找更简单的数据库查询方式
 - [x] mocha 单元测试
-- [ ] redis
+- [x] redis
 - [ ] MongoDB
 - [ ] JWT 认证
 - [ ] mock 数据
