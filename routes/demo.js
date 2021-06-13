@@ -23,12 +23,21 @@ const mysqlTest = async ctx => {
   };
 };
 
-// mysql test
+// mysql get users test
 const getUsers = async ctx => {
-  let data = await mysql.queryUsers();
+  const redisNewsData = await redisTool.get('users');
+  let newsData = [];
+  if (redisNewsData) {
+    newsData = JSON.parse(redisNewsData);
+  } else {
+    let data = await mysql.queryUsers();
+    newsData = data;
+    // update redis data.
+    await redisTool.set('users', JSON.stringify(data));
+  }
   ctx.body = {
     code: 1,
-    data: data,
+    data: newsData,
     mesg: 'ok'
   };
 };
