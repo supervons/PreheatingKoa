@@ -1,6 +1,11 @@
 const redisStore = require('koa-redis');
 const Redisdb = require('ioredis');
 
+/**
+ * redis config.
+ * if you Linux hava firewalld, you need stop it.
+ * systemctl stop firewalld.service
+ */
 module.exports = class Redis {
   constructor() {
     this.config = {
