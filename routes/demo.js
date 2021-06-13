@@ -1,12 +1,24 @@
 const router = require('koa-router')();
 const mysql = require('../data_base/index');
+const redis = require('../config/redis/index');
+const redisTool = new redis();
 
 // mysql test
 const mysqlTest = async ctx => {
-  let data = await mysql.queryNews();
+  // query redis data. if redis exist, don't query database.
+  const redisNewsData = await redisTool.get('news');
+  let newsData = [];
+  if (redisNewsData) {
+    newsData = JSON.parse(redisNewsData);
+  } else {
+    let data = await mysql.queryNews();
+    newsData = data;
+    // update redis data.
+    await redisTool.set('news', JSON.stringify(data));
+  }
   ctx.body = {
     code: 1,
-    data: data,
+    data: newsData,
     mesg: 'ok'
   };
 };
