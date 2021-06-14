@@ -19,15 +19,21 @@ class Mysql {
    * get news info
    * @returns news list
    */
-  queryNews() {
+  queryNews(params) {
+    console.log(mysql.escape(params.title));
     return new Promise((resolve, reject) => {
-      pool.query('SELECT * from news_info', function (error, results, fields) {
-        if (error) {
-          throw error;
+      pool.query(
+        `SELECT * from news_info where news_title =${mysql.escape(
+          params.title
+        )} and news_time ='北京'`,
+        function (error, results, fields) {
+          if (error) {
+            throw error;
+          }
+          resolve(results);
+          // console.log('The solution is: ', results[0].solution);
         }
-        resolve(results);
-        // console.log('The solution is: ', results[0].solution);
-      });
+      );
     });
   }
 
@@ -48,4 +54,7 @@ class Mysql {
   }
 }
 
-module.exports = new Mysql();
+module.exports = {
+  mysql: new Mysql(),
+  escape: mysql.escape
+};
