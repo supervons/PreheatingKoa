@@ -51,6 +51,7 @@ const postTest = async ctx => {
 // router redirect
 const redirect = ctx => {
   ctx.response.redirect('/');
+  console.log('get path params ：' + ctx.params.id);
   ctx.response.body = `<p>redirect</p>`;
 };
 
@@ -64,7 +65,7 @@ const error = ctx => {
 router.post('/postTest', postTest);
 router.post('/mysqlTest', mysqlTest);
 router.post('/getUsers', getUsers);
-router.get('/redirect', redirect);
+router.get('/redirect/:id', redirect);
 router.get('/error', error);
 
 module.exports = router;
