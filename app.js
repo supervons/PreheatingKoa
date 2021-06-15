@@ -14,9 +14,12 @@ const index = require('./routes/index');
 // error middleware
 const handler = async (ctx, next) => {
   try {
-    // console.log('权限认证！');
     // run next middleware
+    const start = Date.now();
     await next();
+    const ms = Date.now() - start;
+    // console request log.
+    console.log(`${ctx.method} ${ctx.url} ${ctx.status} - ${ms}ms`);
   } catch (err) {
     ctx.response.status = err.statusCode || err.status || 500;
     ctx.response.body = {
