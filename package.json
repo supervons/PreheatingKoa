@@ -11,9 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "ioredis": "^4.27.5",
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.1",
     "koa-body": "^4.2.0",
     "koa-compose": "^4.1.0",
+    "koa-jwt": "^4.0.1",
     "koa-redis": "^4.0.1",
     "koa-route": "^3.2.0",
     "koa-router": "^10.0.0",
