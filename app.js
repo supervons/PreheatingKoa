@@ -1,5 +1,8 @@
 const koa = require('koa');
 const app = (module.exports = new koa());
+// jwt
+const jwt = require('koa-jwt');
+const JWT_SECRET = require('./config/redis/constants');
 // open static dir
 const staticFiles = require('koa-static');
 const path = require('path');
@@ -35,6 +38,8 @@ app.use(handler).use(router.allowedMethods());
 app.use(koaBody({ multipart: true }));
 app.use(demo.routes(), demo.allowedMethods());
 app.use(file.routes(), file.allowedMethods());
+// required JWT validation behind this line.
+app.use(jwt({ secret: JWT_SECRET }));
 app.use(index.routes(), index.allowedMethods());
 
 // add a listen.
