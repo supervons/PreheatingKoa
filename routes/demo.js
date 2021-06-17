@@ -2,7 +2,9 @@ const router = require('koa-router')();
 const { mysql } = require('../data_base/index');
 const redis = require('../config/redis/index');
 const redisTool = new redis();
-
+// jwt
+const jwt = require('jsonwebtoken');
+const JWT_SECRET = require('../config/redis/constants');
 // mysql test
 const mysqlTest = async ctx => {
   // query redis data. if redis exist, don't query database.
@@ -62,10 +64,18 @@ const error = ctx => {
   ctx.response.body = 'Page Not Found';
 };
 
+// get jwt Token
+const getJwtToken = ctx => {
+  const userId = ctx.query.userId;
+  console.log(userId);
+  ctx.body = { token: jwt.sign({ id: userId }, JWT_SECRET) };
+};
+
 router.post('/postTest', postTest);
 router.post('/mysqlTest', mysqlTest);
 router.post('/getUsers', getUsers);
 router.get('/redirect/:id', redirect);
 router.get('/error', error);
+router.get('/getJwtToken', getJwtToken);
 
 module.exports = router;
