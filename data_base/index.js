@@ -39,17 +39,24 @@ class Mysql {
 
   /**
    * get users
+   * @param {*} userId
+   * @param {*} passWord
    * @returns
    */
-  queryUsers() {
+  queryUser(userId, passWord) {
     return new Promise((resolve, reject) => {
-      pool.query('SELECT * from user_info', function (error, results, fields) {
-        if (error) {
-          throw error;
+      pool.query(
+        `SELECT * from user_info  where user_name=${mysql.escape(
+          userId
+        )} and pass_word=${mysql.escape(passWord)}`,
+        function (error, results, fields) {
+          if (error) {
+            throw error;
+          }
+          resolve(results);
+          // console.log('The solution is: ', results[0].solution);
         }
-        resolve(results);
-        // console.log('The solution is: ', results[0].solution);
-      });
+      );
     });
   }
 }

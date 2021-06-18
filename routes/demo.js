@@ -65,10 +65,16 @@ const error = ctx => {
 };
 
 // get jwt Token
-const getJwtToken = ctx => {
-  const userId = ctx.query.userId;
-  console.log(userId);
-  ctx.body = { token: jwt.sign({ id: userId }, JWT_SECRET) };
+const getJwtToken = async ctx => {
+  const userId = ctx.request.body.userId;
+  const passWord = ctx.request.body.userId;
+  let user = await mysql.queryUser(userId, passWord);
+  console.log(user);
+  if (user.length !== 0) {
+    ctx.body = { token: jwt.sign({ id: userId }, JWT_SECRET) };
+  } else {
+    ctx.status = 401;
+  }
 };
 
 router.post('/postTest', postTest);
@@ -76,6 +82,6 @@ router.post('/mysqlTest', mysqlTest);
 router.post('/getUsers', getUsers);
 router.get('/redirect/:id', redirect);
 router.get('/error', error);
-router.get('/getJwtToken', getJwtToken);
+router.post('/getJwtToken', getJwtToken);
 
 module.exports = router;
