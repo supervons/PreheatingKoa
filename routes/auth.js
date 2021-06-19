@@ -15,7 +15,9 @@ const getJwtToken = async ctx => {
   let user = await mysql.queryUser(userId, passWord);
   console.log(user);
   if (user.length !== 0) {
-    ctx.body = { token: jwt.sign({ id: userId }, JWT_SECRET) };
+    ctx.body = {
+      token: jwt.sign({ id: userId }, JWT_SECRET, { expiresIn: 60 * 60 })
+    };
   } else {
     ctx.status = 401;
   }
