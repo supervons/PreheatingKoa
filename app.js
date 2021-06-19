@@ -10,6 +10,7 @@ app.use(staticFiles(path.join(__dirname, 'public')));
 const koaBody = require('koa-body');
 const router = require('koa-router')();
 // import routes
+const auth = require('./routes/auth');
 const demo = require('./routes/demo');
 const file = require('./routes/file');
 const index = require('./routes/index');
@@ -36,10 +37,11 @@ const handler = async (ctx, next) => {
 // if method wrong, return 405 Method Not Allowed.
 app.use(handler).use(router.allowedMethods());
 app.use(koaBody({ multipart: true }));
-app.use(demo.routes(), demo.allowedMethods());
-app.use(file.routes(), file.allowedMethods());
+app.use(auth.routes(), auth.allowedMethods());
 // required JWT validation behind this line.
 app.use(jwt({ secret: JWT_SECRET }));
+app.use(demo.routes(), demo.allowedMethods());
+app.use(file.routes(), file.allowedMethods());
 app.use(index.routes(), index.allowedMethods());
 
 // add a listen.
