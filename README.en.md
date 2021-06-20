@@ -19,7 +19,7 @@
 - [x] Mocha unit tests
 - [x] redis
 - [ ] MongoDB
-- [ ] JWT certification
+- [x] JWT certification
 - [ ] mock data
 - [ ] TS modification
 - [ ] Microservices
