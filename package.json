@@ -5,6 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
+    "prod": "pm2 start app.js",
+    "stop-prod": "pm2 stop app.js",
     "test": "mocha"
   },
   "author": "",
