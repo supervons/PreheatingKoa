@@ -11,9 +11,9 @@ const JWT_SECRET = require('../config/redis/constants');
 // get jwt Token
 const getJwtToken = async ctx => {
   const userId = ctx.request.body.userId;
-  const passWord = ctx.request.body.userId;
+  const passWord = ctx.request.body.passWord;
   let user = await mysql.queryUser(userId, passWord);
-  console.log(user);
+  console.log('1' + user);
   if (user.length !== 0) {
     ctx.status = 200;
     ctx.body = {
@@ -23,6 +23,10 @@ const getJwtToken = async ctx => {
     };
   } else {
     ctx.status = 401;
+    ctx.body = {
+      code: 0,
+      msg: 'auth failed, username or password wrong!'
+    };
   }
 };
 
