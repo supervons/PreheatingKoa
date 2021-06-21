@@ -14,7 +14,11 @@ const auth = require('./routes/auth');
 const demo = require('./routes/demo');
 const file = require('./routes/file');
 const index = require('./routes/index');
-
+// orm
+const typeorm = require('typeorm');
+const ormConfig = require('./config/redis/ormConfig');
+require('reflect-metadata');
+typeorm.createConnection(ormConfig);
 // error middleware
 const handler = async (ctx, next) => {
   try {
