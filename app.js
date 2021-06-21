@@ -11,13 +11,14 @@ const koaBody = require('koa-body');
 const router = require('koa-router')();
 // import routes
 const auth = require('./routes/auth');
+const orm = require('./routes/orm');
 const demo = require('./routes/demo');
 const file = require('./routes/file');
 const index = require('./routes/index');
-// orm
+// orm require dependencies.
 const typeorm = require('typeorm');
 const ormConfig = require('./config/redis/ormConfig');
-require('reflect-metadata');
+// require('reflect-metadata'); Not in use at the moment
 typeorm.createConnection(ormConfig);
 // error middleware
 const handler = async (ctx, next) => {
@@ -44,6 +45,7 @@ app.use(koaBody({ multipart: true }));
 app.use(auth.routes(), auth.allowedMethods());
 // required JWT validation behind this line.
 app.use(jwt({ secret: JWT_SECRET }));
+app.use(orm.routes(), orm.allowedMethods());
 app.use(demo.routes(), demo.allowedMethods());
 app.use(file.routes(), file.allowedMethods());
 app.use(index.routes(), index.allowedMethods());

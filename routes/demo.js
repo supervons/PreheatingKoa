@@ -5,8 +5,6 @@ const redisTool = new redis();
 // jwt
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = require('../config/redis/constants');
-//
-const { getConnection } = require('typeorm');
 
 // mysql test
 const mysqlTest = async ctx => {
@@ -49,14 +47,6 @@ const getUsers = async ctx => {
 };
 
 // post request test
-const ormUserInfoTest = async ctx => {
-  const connection = getConnection();
-  const userRepository = connection.getRepository('UserInfo');
-  const users = await userRepository.find();
-  ctx.response.body = users;
-};
-
-// post request test
 const postTest = async ctx => {
   ctx.response.body = ctx.request.body.data;
 };
@@ -93,7 +83,6 @@ router.post('/mysqlTest', mysqlTest);
 router.post('/getUsers', getUsers);
 router.get('/redirect/:id', redirect);
 router.get('/error', error);
-router.post('/ormUserInfoTest', ormUserInfoTest);
 router.post('/getJwtToken', getJwtToken);
 
 module.exports = router;
