@@ -15,7 +15,7 @@
 - [x] routing split
 - [x] Static resource opening
 - [x] database connection
-- [ ] Looking for simpler database queries
+- [x] Looking for simpler database queries : typeorm
 - [x] Mocha unit tests
 - [x] redis
 - [ ] MongoDB
