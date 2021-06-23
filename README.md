@@ -1,13 +1,13 @@
 [简体中文](./README.md) | [English](./README.en.md)
 
-### 从零开始，一步一步搭建 Koa 框架，为后面打好基础。
+### 从零开始，基于 Typescript 一步一步搭建 Koa 框架，作为后面开发业务的轮子模板项目；
 
-### Build some KOA fundamentals.
-
-1. 基础接口；
-2. 路由拆分 koa-route 及 koa-router 使用；
-3. koa-static 静态资源开放；
-4. mysql 数据库连接；
+1. JWT 路由鉴权；
+2. 基于 typeorm 的 mysql 数据库连接；
+3. redis 缓存关系库使用及示例；
+4. mocha 单元测试；
+5. koa-static 静态资源开放；
+6. 路由拆分 koa-route 及 koa-router 使用；
 
 ### 项目结构
 

@@ -1,33 +1,33 @@
 [简体中文](./README.md) | [English](./README.en.md)
 
-### Build the KOA framework step by step from scratch to lay the foundation for the future.
+### Built the KOA framework step by step based on TypeScript from scratch as a wheel template project for later development business;
 
-### Build some KOA fundamentals.
-
-1. Basic interface;
-2. Split the use of KOA-Route and KOA-Router;
-3. KOA-static static resource opening;
-4. MySQL database connection;
+1. JWT routing authentication;
+2. MySQL database connection based on TypeORM;
+3. Use and example of Redis cache relational library;
+4. Mocha unit test;
+5. KOA-static static resource opening;
+6. Split the use of KOA-Route and KOA-Router;
 
 ### PROJECT DIR INTRODUCE
 
 ```
 .
 ├── src
-│   ├── controller        //controller层
-│   ├── entity            //实体类
-│   ├── redis             //redis相关配置及工具类
-│   ├── router            //路由配置
-│   ├── service           //service层
-│   ├── config.ts         //配置文件
-│   ├── constants.ts      //项目常量
-│   └── index.ts          //项目入口index.js
-├── .env                  //配置文件
-├── ecosystem.config.js   //pm2配置
-├── ormconfig.json        //数据库 ORM 配置文件
-├── nodemon.json          //nodemon配置
-├── package.json          //npm 安装包
-└── tsconfig.json         //ts配置文件
+│   ├── controller        // controller
+│   ├── entity
+│   ├── redis             //redis config
+│   ├── router            //route config
+│   ├── service           //service
+│   ├── config.ts         //project common config
+│   ├── constants.ts      //project const value
+│   └── index.ts          //entrance index.js
+├── .env                  //config file
+├── ecosystem.config.js   //pm2 config
+├── ormconfig.json        //database ORM config file
+├── nodemon.json          //nodemon config
+├── package.json          //npm config
+└── tsconfig.json         //ts config
 ```
 
 ### Finished
