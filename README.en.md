@@ -9,7 +9,28 @@
 3. KOA-static static resource opening;
 4. MySQL database connection;
 
-# # # for development
+### PROJECT DIR INTRODUCE
+
+```
+.
+├── src
+│   ├── controller        //controller层
+│   ├── entity            //实体类
+│   ├── redis             //redis相关配置及工具类
+│   ├── router            //路由配置
+│   ├── service           //service层
+│   ├── config.ts         //配置文件
+│   ├── constants.ts      //项目常量
+│   └── index.ts          //项目入口index.js
+├── .env                  //配置文件
+├── ecosystem.config.js   //pm2配置
+├── ormconfig.json        //数据库 ORM 配置文件
+├── nodemon.json          //nodemon配置
+├── package.json          //npm 安装包
+└── tsconfig.json         //ts配置文件
+```
+
+### Finished
 
 - [x] Base Interface
 - [x] routing split
@@ -18,9 +39,9 @@
 - [x] Looking for simpler database queries : typeorm
 - [x] Mocha unit tests
 - [x] redis
-- [ ] MongoDB
 - [x] JWT certification
-- [ ] mock data
-- [ ] TS modification
-- [ ] Microservices
-- [ ] Swagger Api document
+- [x] TS modification
+
+### TODO-LIST
+
+- [ ] Api document

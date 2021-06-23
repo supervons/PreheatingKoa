@@ -9,7 +9,28 @@
 3. koa-static 静态资源开放；
 4. mysql 数据库连接；
 
-### 待开发
+### 项目结构
+
+```
+.
+├── src
+│   ├── controller        //controller层
+│   ├── entity            //实体类
+│   ├── redis             //redis相关配置及工具类
+│   ├── router            //路由配置
+│   ├── service           //service层
+│   ├── config.ts         //配置文件
+│   ├── constants.ts      //项目常量
+│   └── index.ts          //项目入口index.js
+├── .env                  //配置文件
+├── ecosystem.config.js   //pm2配置
+├── ormconfig.json        //数据库 ORM 配置文件
+├── nodemon.json          //nodemon配置
+├── package.json          //npm 安装包
+└── tsconfig.json         //ts配置文件
+```
+
+### 已完成
 
 - [x] 基础接口
 - [x] 路由拆分
@@ -18,9 +39,9 @@
 - [x] 寻找更简单的数据库查询方式: typeorm
 - [x] mocha 单元测试
 - [x] redis
-- [ ] MongoDB
 - [x] JWT 认证
-- [ ] mock 数据
-- [ ] TS 改造
-- [ ] 微服务
-- [ ] Swagger Api 文档
+- [x] TS 改造
+
+### 待开发
+
+- [ ] Api 文档
