@@ -30,6 +30,12 @@
 └── tsconfig.json         //ts config
 ```
 
+### database file path
+
+```
+./public/mysql.sql
+```
+
 ### Finished
 
 - [x] Base Interface
